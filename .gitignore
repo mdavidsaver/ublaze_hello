@@ -1,3 +1,4 @@
+# Vivado debris
 /.Xil/
 /*.cache/
 /*.gen/
@@ -9,3 +10,10 @@
 *.jou
 /*.str
 *.dcp
+
+# My debris
+/*.include
+/*.elf
+/*.bit
+/*.mmi
+/Workspace/
