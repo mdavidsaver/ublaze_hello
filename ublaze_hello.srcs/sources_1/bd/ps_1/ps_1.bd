@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x575C659C19206C7E",
+      "boundary_crc": "0x575C659C5AF699DD",
       "device": "xc7k160tffg676-2",
       "gen_directory": "../../../../ublaze_hello.gen/sources_1/bd/ps_1",
       "name": "ps_1",
@@ -12,9 +12,7 @@
     },
     "design_tree": {
       "clk_sys_0": "",
-      "microblaze_mcs_0": "",
-      "vio_0": "",
-      "vio_reset": ""
+      "microblaze_mcs_0": ""
     },
     "interface_ports": {
       "uart_0": {
@@ -31,17 +29,7 @@
     },
     "ports": {
       "locked": {
-        "direction": "O",
-        "parameters": {
-          "PortType": {
-            "value": "undef",
-            "value_src": "ip_prop"
-          },
-          "PortType.PROP_SRC": {
-            "value": "false",
-            "value_src": "ip_prop"
-          }
-        }
+        "direction": "O"
       },
       "clk20": {
         "type": "clk",
@@ -96,7 +84,7 @@
             "value": "24576"
           },
           "TRACE": {
-            "value": "1"
+            "value": "0"
           },
           "UART_BAUDRATE": {
             "value": "115200"
@@ -109,39 +97,10 @@
           }
         },
         "interface_ports": {
-          "TRACE": {
-            "mode": "Master",
-            "vlnv_bus_definition": "xilinx.com:interface:mbtrace:2.0",
-            "vlnv": "xilinx.com:interface:mbtrace_rtl:2.0"
-          },
           "UART": {
             "mode": "Master",
             "vlnv_bus_definition": "xilinx.com:interface:uart:1.0",
             "vlnv": "xilinx.com:interface:uart_rtl:1.0"
-          }
-        }
-      },
-      "vio_0": {
-        "vlnv": "xilinx.com:ip:vio:3.0",
-        "ip_revision": "26",
-        "xci_name": "ps_1_vio_0_0",
-        "xci_path": "ip/ps_1_vio_0_0/ps_1_vio_0_0.xci",
-        "inst_hier_path": "vio_0",
-        "parameters": {
-          "C_PROBE_OUT0_INIT_VAL": {
-            "value": "0x1"
-          }
-        }
-      },
-      "vio_reset": {
-        "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
-        "ip_revision": "4",
-        "xci_name": "ps_1_util_vector_logic_0_0",
-        "xci_path": "ip/ps_1_util_vector_logic_0_0/ps_1_util_vector_logic_0_0.xci",
-        "inst_hier_path": "vio_reset",
-        "parameters": {
-          "C_SIZE": {
-            "value": "1"
           }
         }
       }
@@ -164,27 +123,13 @@
       "clk_sys_0_clk_out1": {
         "ports": [
           "clk_sys_0/clk_out1",
-          "microblaze_mcs_0/Clk",
-          "vio_0/clk"
+          "microblaze_mcs_0/Clk"
         ]
       },
       "clk_sys_0_locked": {
         "ports": [
           "clk_sys_0/locked",
-          "vio_reset/Op2",
-          "vio_0/probe_in0",
-          "locked"
-        ]
-      },
-      "vio_0_probe_out0": {
-        "ports": [
-          "vio_0/probe_out0",
-          "vio_reset/Op1"
-        ]
-      },
-      "vio_reset_Res": {
-        "ports": [
-          "vio_reset/Res",
+          "locked",
           "microblaze_mcs_0/Reset"
         ]
       }
