@@ -19,11 +19,27 @@ trap 'rm -rf "$SCRATCH"' INT QUIT EXIT
 cat <<EOF > "$SCRATCH/vivado.tcl"
 open_project "ublaze_hello.xpr"
 
-# remove .dcp in not present (from clean checkout)
+# The first time through, the DCP files are not present.
+# However, vivado will barf if they are still referenced :(
+# So must remove references.
+# 1. From the "source" files list
 foreach dcp [get_files -quiet -filter file_type=="Design\ Checkpoint"] {
     if {[get_property IS_AVAILABLE \$dcp] == 0} {
         puts "Remove reference to missing DCP \$dcp"
         remove_files \$dcp
+    } else {
+        puts "Found DCP: \$dcp"
+    }
+}
+# 2. From runs
+foreach run [get_runs] {
+    set dcpname [get_property incremental_checkpoint \$run]
+    if {[string length \$dcpname]} {
+        puts "RUN \$run has DCP \$dcpname"
+        if {![file exists \$dcpname]} {
+            puts "Clear mssing"
+            set_property incremental_checkpoint "" \$run
+        }
     }
 }
 

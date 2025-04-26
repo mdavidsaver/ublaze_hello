@@ -27,10 +27,18 @@ Run as a user with permission to access the Quart UART devices.
 
 ## ublaze debug
 
+```sh
+git clone https://github.com/BerkeleyLab/XVC-FTDI-JTAG
+make -C XVC-FTDI-JTAG
+```
 
 ```sh
+./XVC-FTDI-JTAG/ftdiJTAG -c 30M -g 11
 hw_server -e 'set auto-open-servers xilinx-xvc:localhost:2542'
-connect -xvc-url TCP:localhost:2542
+xsdb
+  connect -xvc-url TCP:localhost:2542
+  memmap -file Workspace/bar/build/bar.elf
+  targets 3
 ```
 
 
